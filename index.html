@@ -74,7 +74,10 @@
 
     /* Skill 图片交互效果 */
     #skill-img {
-      transition: transform 0.3s;
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+      transition: transform 0.4s ease, top 0.4s ease, left 0.4s ease;
     }
 
     /* 鼠标悬停轻微放大 */
@@ -84,16 +87,17 @@
 
     /* 点击放大效果 */
     .zoomed {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 80%;
-      max-height: 90%;
+      position: fixed !important;
+      top: 50% !important;
+      left: 50% !important;
+      width: 95%;
+      max-height: 95%;
       transform: translate(-50%, -50%) scale(1);
       z-index: 9999;
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
       cursor: zoom-out;
-      transition: transform 0.3s;
+      transition: transform 0.4s ease, top 0.4s ease, left 0.4s ease;
+      transform-origin: center center;
     }
 
     /* 响应式设计 */
@@ -164,7 +168,7 @@
             src="/picture/skill.png" 
             alt="Skills Image" 
             id="skill-img"
-            style="max-width: 100%; height: auto; cursor: pointer;"
+            style="max-width: 100%; height: auto;"
           >
         </div>
       </div>
@@ -184,6 +188,7 @@
   <!-- 点击放大 Skill 图片脚本 -->
   <script>
     const skillImg = document.getElementById('skill-img');
+
     skillImg.addEventListener('click', function() {
       if (!skillImg.classList.contains('zoomed')) {
         skillImg.classList.add('zoomed'); // 点击放大
