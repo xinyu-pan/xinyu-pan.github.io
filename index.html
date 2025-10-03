@@ -18,12 +18,15 @@
       padding: 40px 20px;
     }
     .card {
-      background: #fff;
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       padding: 40px;
       text-align: center;
       transition: transform 0.2s ease;
+      background-image: url("picture/card.png");
+      background-size: cover;
+      background-position: center;
+      color: #fff; /* 让文字在背景图上更清晰 */
     }
     .card:hover {
       transform: translateY(-5px);
@@ -34,7 +37,6 @@
     }
     p.subtitle {
       font-size: 1.2em;
-      color: #666;
       margin-top: 10px;
     }
     .contact {
@@ -68,7 +70,7 @@
       <p class="subtitle">Bioinformatics Engineer</p>
       <div class="contact">
         <h3>Contact Me</h3>
-        <p>E-Mail: <a href="mailto:merakp0029@gmail.com">merakp0029@gmail.com</a></p>
+        <p>E-Mail: <a href="mailto:merakp0029@gmail.com" style="color:#fff; text-decoration:underline;">merakp0029@gmail.com</a></p>
         <p>Phone: +86-18529483419</p>
       </div>
     </div>
