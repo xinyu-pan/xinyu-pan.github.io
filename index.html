@@ -79,13 +79,9 @@
       cursor: pointer;
       transition: transform 0.4s ease, top 0.4s ease, left 0.4s ease;
     }
-
-    /* 鼠标悬停轻微放大 */
     #skill-img:not(.zoomed):hover {
       transform: scale(1.05);
     }
-
-    /* 点击放大效果 */
     .zoomed {
       position: fixed !important;
       top: 50% !important;
@@ -107,10 +103,9 @@
       text-decoration: none;
       transition: transform 0.2s ease, color 0.2s ease;
     }
-
     .project-link:hover {
-      transform: scale(1.03);   /* 略微放大 */
-      color: #228B22;            /* 悬停颜色稍浅的绿色 */
+      transform: scale(1.03);
+      color: #228B22;
     }
 
     /* 响应式设计 */
@@ -123,6 +118,60 @@
       section h2 { font-size: 1.5em; }
       section p, section li { font-size: 1em; }
       .contact { font-size: 1em; }
+    }
+
+    /* 悬浮菜单按钮 */
+    #menu-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #006400;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 10000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background-color 0.3s;
+    }
+    #menu-button:hover { background-color: #228B22; }
+    #menu-button .bar {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 3px 0;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* 弹出菜单 */
+    #menu-list {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      background-color: #f0fff0;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      z-index: 9999;
+      overflow: hidden;
+    }
+    #menu-list a {
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #006400;
+      font-family: 'Times New Roman', serif;
+      transition: background-color 0.2s;
+    }
+    #menu-list a:hover {
+      background-color: #228B22;
+      color: white;
     }
   </style>
 </head>
@@ -140,7 +189,7 @@
     </div>
 
     <!-- About Me -->
-    <section>
+    <section id="about">
       <h2>About Me</h2>
       <p style="font-family: 'Times New Roman', serif;">
         Hello, I am Xinyu-Pan. This is my personal homepage, where I will introduce my education and research experience.
@@ -148,7 +197,7 @@
     </section>
 
     <!-- Education -->
-    <section>
+    <section id="education">
       <h2>Education</h2>
       <div style="font-family: 'Times New Roman', serif; margin-bottom: 25px;">
         <p><strong>Sun Yat-sen University</strong>
@@ -171,7 +220,7 @@
     </section>
 
     <!-- Skills -->
-    <section>
+    <section id="skills">
       <h2>Skills</h2>
       <div style="font-family: 'Times New Roman', serif; line-height: 1.6;">
         <p><strong>Languages:</strong> Linux, R, Python</p>
@@ -188,7 +237,7 @@
     </section>
 
     <!-- Projects -->
-    <section>
+    <section id="projects">
       <h2>Projects</h2>
       <div style="line-height: 1.6;">
         <p>
@@ -209,15 +258,38 @@
     </footer>
   </div>
 
+  <!-- 悬浮菜单按钮 -->
+  <div id="menu-button">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <div id="menu-list">
+    <a href="#about">About Me</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+  </div>
+
   <!-- 点击放大 Skill 图片脚本 -->
   <script>
     const skillImg = document.getElementById('skill-img');
-
     skillImg.addEventListener('click', function() {
       if (!skillImg.classList.contains('zoomed')) {
-        skillImg.classList.add('zoomed'); // 点击放大
+        skillImg.classList.add('zoomed');
       } else {
-        skillImg.classList.remove('zoomed'); // 再次点击缩回
+        skillImg.classList.remove('zoomed');
+      }
+    });
+
+    // 菜单按钮
+    const menuButton = document.getElementById('menu-button');
+    const menuList = document.getElementById('menu-list');
+    menuButton.addEventListener('click', () => {
+      if (menuList.style.display === 'flex') {
+        menuList.style.display = 'none';
+      } else {
+        menuList.style.display = 'flex';
       }
     });
   </script>
