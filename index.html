@@ -72,27 +72,24 @@
       color: #999;
     }
 
-    /* Skill 图片悬停抖动动画 */
-    @keyframes shake {
-      0% { transform: translate(0px, 0px); }
-      20% { transform: translate(-2px, 2px); }
-      40% { transform: translate(2px, -2px); }
-      60% { transform: translate(-2px, 2px); }
-      80% { transform: translate(2px, -2px); }
-      100% { transform: translate(0px, 0px); }
+    /* Skill 图片交互效果 */
+    #skill-img {
+      transition: transform 0.3s;
     }
-    #skill-img:hover {
-      animation: shake 0.3s;
+
+    /* 鼠标悬停轻微放大 */
+    #skill-img:not(.zoomed):hover {
+      transform: scale(1.05);
     }
+
     /* 点击放大效果 */
     .zoomed {
       position: fixed;
       top: 50%;
       left: 50%;
       width: 80%;
-      height: auto;
       max-height: 90%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) scale(1);
       z-index: 9999;
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
       cursor: zoom-out;
@@ -189,9 +186,9 @@
     const skillImg = document.getElementById('skill-img');
     skillImg.addEventListener('click', function() {
       if (!skillImg.classList.contains('zoomed')) {
-        skillImg.classList.add('zoomed');
+        skillImg.classList.add('zoomed'); // 点击放大
       } else {
-        skillImg.classList.remove('zoomed');
+        skillImg.classList.remove('zoomed'); // 再次点击缩回
       }
     });
   </script>
