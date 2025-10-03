@@ -5,44 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Homepage | Xinyu-Pan</title>
   <style>
+    /* 全局样式 */
     body {
       font-family: "Helvetica Neue", Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #e6f2e6; /* light green */
+      background: #e6f2e6;
       color: #333;
-      font-size: 1.25em; /* 整体放大 125% */
+      font-size: 1.25em; /* 125%桌面字体 */
     }
     .container {
-      max-width: 1125px; /* 原来900px × 1.25 */
+      max-width: 1125px; 
+      width: 100%;
       margin: 0 auto;
-      padding: 50px 25px; /* 内边距按比例放大 */
+      padding: 50px 25px;
     }
     .card {
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      padding: 50px 40px; /* 卡片内容放大125% */
+      padding: 50px 40px;
       text-align: center;
       transition: transform 0.2s ease;
       background-image: url("picture/card.png");
       background-size: cover;
       background-position: center;
-      color: #000; /* 全部黑色文字 */
+      color: #000;
     }
     .card:hover {
       transform: translateY(-5px);
     }
     h1 {
-      font-size: 2.75em; /* 2.2em × 1.25 */
+      font-size: 2.75em;
       margin: 0;
     }
     p.subtitle {
-      font-size: 1.5em; /* 1.2em × 1.25 */
+      font-size: 1.5em;
       margin-top: 12px;
     }
     .contact {
-      margin-top: 30px; /* 放大间距 */
-      font-size: 1.375em; /* 1.1em × 1.25 */
+      margin-top: 30px;
+      font-size: 1.375em;
       line-height: 1.6;
       text-align: center;
     }
@@ -51,28 +53,68 @@
       text-decoration: underline;
     }
     section {
-      margin-top: 50px; /* 放大间距 */
+      margin-top: 50px;
       text-align: left;
     }
     section h2 {
-      font-size: 1.875em; /* 1.5em × 1.25 */
+      font-size: 1.875em;
       border-left: 4px solid #4a90e2;
       padding-left: 10px;
       margin-bottom: 18px;
     }
     section p, section li {
-      font-size: 1.25em; /* 段落文字放大125% */
+      font-size: 1.25em;
     }
     footer {
-      margin-top: 62px; /* 底部间距按比例放大 */
+      margin-top: 62px;
       text-align: center;
-      font-size: 1.125em; /* 0.9em × 1.25 */
+      font-size: 1.125em;
       color: #999;
+    }
+
+    /* Skill 图片悬停抖动动画 */
+    @keyframes shake {
+      0% { transform: translate(0px, 0px); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0px, 0px); }
+    }
+    #skill-img:hover {
+      animation: shake 0.3s;
+    }
+    /* 点击放大效果 */
+    .zoomed {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 80%;
+      height: auto;
+      max-height: 90%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      cursor: zoom-out;
+      transition: transform 0.3s;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      body { font-size: 1em; }
+      .container { padding: 20px 15px; }
+      .card { padding: 30px 20px; }
+      h1 { font-size: 2em; }
+      p.subtitle { font-size: 1.2em; }
+      section h2 { font-size: 1.5em; }
+      section p, section li { font-size: 1em; }
+      .contact { font-size: 1em; }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- 卡片 -->
     <div class="card">
       <h1>Xinyu-Pan</h1>
       <p class="subtitle">Bioinformatics Engineer</p>
@@ -82,7 +124,8 @@
         <p>Phone: +86-18529483419</p>
       </div>
     </div>
-    
+
+    <!-- About Me -->
     <section>
       <h2>About Me</h2>
       <p style="font-family: 'Times New Roman', serif;">
@@ -90,43 +133,47 @@
       </p>
     </section>
 
+    <!-- Education -->
     <section>
       <h2>Education</h2>
       <div style="font-family: 'Times New Roman', serif; margin-bottom: 25px;">
-        <p>
-          <strong>Sun Yat-sen University</strong>
+        <p><strong>Sun Yat-sen University</strong>
           <span style="float: right;">Sept 2018– June 2022</span>
         </p>
         <p>BS in Biotechnology</p>
         <p>GPA: 84/100</p>
         <p>Coursework: Bioinformatics, Immunology, Biochemistry, Cell Biology, Molecular Biology</p>
       </div>
-
       <div style="font-family: 'Times New Roman', serif; margin-bottom: 25px;">
-        <p>
-          <strong>Sun Yat-sen University</strong>
+        <p><strong>Sun Yat-sen University</strong>
           <span style="float: right;">Sept 2022– June 2025</span>
         </p>
         <p>MS in Biological and Pharmaceutical Engineering</p>
         <p>GPA: 86/100</p>
       </div>
-
       <p style="margin-top: 25px; font-family: 'Times New Roman', serif; font-weight: bold;">
         English Proficiency: IELTS 6.5
       </p>
     </section>
-    
+
+    <!-- Skills -->
     <section>
       <h2>Skills</h2>
       <div style="font-family: 'Times New Roman', serif; line-height: 1.6;">
         <p><strong>Languages:</strong> Linux, R, Python</p>
         <p><strong>Technologies:</strong> Proficient in using various bioinformatics tools for single-cell transcriptomics (Seurat, cNMF, Monocle, CellPhoneDB, hdWGCNA, pySCENIC), spatial transcriptomics (Seurat), and single-cell ATAC-seq analysis (ArchR, Signac), including data integration and downstream analysis.</p>
         <div style="text-align: center; margin-top: 25px;">
-          <img src="/picture/skill.png" alt="Skills Image" style="max-width: 100%; height: auto;">
+          <img 
+            src="/picture/skill.png" 
+            alt="Skills Image" 
+            id="skill-img"
+            style="max-width: 100%; height: auto; cursor: pointer;"
+          >
         </div>
       </div>
     </section>
 
+    <!-- Projects -->
     <section>
       <h2>Projects</h2>
       <p><!-- Empty content, to be added later --></p>
@@ -136,5 +183,17 @@
       © 2025 Xinyu-Pan. All rights reserved.
     </footer>
   </div>
+
+  <!-- 点击放大 Skill 图片脚本 -->
+  <script>
+    const skillImg = document.getElementById('skill-img');
+    skillImg.addEventListener('click', function() {
+      if (!skillImg.classList.contains('zoomed')) {
+        skillImg.classList.add('zoomed');
+      } else {
+        skillImg.classList.remove('zoomed');
+      }
+    });
+  </script>
 </body>
 </html>
