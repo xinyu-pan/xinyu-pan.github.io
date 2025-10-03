@@ -85,20 +85,20 @@
       transform: scale(1.05);
     }
 
+    /* 点击放大效果 */
     .zoomed {
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(4); /* 调整 scale 让图片更合理 */
-      max-width: 85%; /* 屏幕宽度 85% */
-      max-height: 85%;
-      width: auto;
-      height: auto;
+      transform: translate(-50%, -50%);
+      width: 85vw;   /* 屏幕宽度 85% */
+      height: auto;  /* 高度自适应 */
+      max-height: 95vh; /* 屏幕高度 95% */
       z-index: 9999;
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
       cursor: zoom-out;
-      transition: transform 0.4s ease;
-      transform-origin: center center; /* 保持从图片中心放大 */
+      transition: transform 0.4s ease, width 0.4s ease, height 0.4s ease;
+      transform-origin: center center;
     }
 
     /* 响应式设计 */
