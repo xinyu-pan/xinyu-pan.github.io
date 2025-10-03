@@ -12,7 +12,7 @@
       padding: 0;
       background: #e6f2e6;
       color: #333;
-      font-size: 1.25em; /* 125%桌面字体 */
+      font-size: 1.25em; 
     }
     .container {
       max-width: 1125px; 
@@ -34,54 +34,18 @@
     .card:hover {
       transform: translateY(-5px);
     }
-    h1 {
-      font-size: 2.75em;
-      margin: 0;
-    }
-    p.subtitle {
-      font-size: 1.5em;
-      margin-top: 12px;
-    }
-    .contact {
-      margin-top: 30px;
-      font-size: 1.375em;
-      line-height: 1.6;
-      text-align: center;
-    }
-    .contact a {
-      color: #000 !important;
-      text-decoration: underline;
-    }
-    section {
-      margin-top: 50px;
-      text-align: left;
-    }
-    section h2 {
-      font-size: 1.875em;
-      border-left: 4px solid #4a90e2;
-      padding-left: 10px;
-      margin-bottom: 18px;
-    }
-    section p, section li {
-      font-size: 1.25em;
-    }
-    footer {
-      margin-top: 62px;
-      text-align: center;
-      font-size: 1.125em;
-      color: #999;
-    }
+    h1 { font-size: 2.75em; margin: 0; }
+    p.subtitle { font-size: 1.5em; margin-top: 12px; }
+    .contact { margin-top: 30px; font-size: 1.375em; line-height: 1.6; text-align: center; }
+    .contact a { color: #000 !important; text-decoration: underline; }
+    section { margin-top: 50px; text-align: left; }
+    section h2 { font-size: 1.875em; border-left: 4px solid #4a90e2; padding-left: 10px; margin-bottom: 18px; }
+    section p, section li { font-size: 1.25em; }
+    footer { margin-top: 62px; text-align: center; font-size: 1.125em; color: #999; }
 
-    /* Skill 图片交互效果 */
-    #skill-img {
-      position: relative;
-      z-index: 1;
-      cursor: pointer;
-      transition: transform 0.4s ease, top 0.4s ease, left 0.4s ease;
-    }
-    #skill-img:not(.zoomed):hover {
-      transform: scale(1.05);
-    }
+    /* Skill 图片交互 */
+    #skill-img { position: relative; z-index: 1; cursor: pointer; transition: transform 0.4s ease, top 0.4s ease, left 0.4s ease; }
+    #skill-img:not(.zoomed):hover { transform: scale(1.05); }
     .zoomed {
       position: fixed !important;
       top: 50% !important;
@@ -96,19 +60,17 @@
       transform-origin: center center;
     }
 
-    /* Projects 链接悬停效果 */
+    /* Projects 链接 */
     .project-link {
       font-family: 'Times New Roman', serif;
-      color: #006400; /* 深绿色 */
+      color: #006400; 
       text-decoration: none;
       transition: transform 0.2s ease, color 0.2s ease;
     }
-    .project-link:hover {
-      transform: scale(1.03);
-      color: #228B22;
-    }
+    .project-link::after { content: " 🔗"; } /* 加箭头 */
+    .project-link:hover { transform: scale(1.03); color: #228B22; }
 
-    /* 响应式设计 */
+    /* 响应式 */
     @media (max-width: 768px) {
       body { font-size: 1em; }
       .container { padding: 20px 15px; }
@@ -122,57 +84,45 @@
 
     /* 悬浮菜单按钮 */
     #menu-button {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background-color: #006400;
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      z-index: 10000;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      position: fixed; top: 20px; right: 20px; width: 50px; height: 50px;
+      background-color: #006400; border-radius: 50%; display: flex;
+      flex-direction: column; justify-content: center; align-items: center;
+      cursor: pointer; z-index: 10000; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: background-color 0.3s;
     }
     #menu-button:hover { background-color: #228B22; }
     #menu-button .bar {
-      width: 25px;
-      height: 3px;
-      background-color: white;
-      margin: 3px 0;
-      border-radius: 2px;
+      width: 25px; height: 3px; background-color: white; margin: 3px 0; border-radius: 2px;
       transition: all 0.3s;
     }
 
     /* 弹出菜单 */
     #menu-list {
-      position: fixed;
-      top: 80px;
-      right: 20px;
+      position: fixed; top: 80px; right: 20px;
       background-color: #f0fff0;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      display: none;
-      flex-direction: column;
+      display: none; flex-direction: column;
       z-index: 9999;
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    #menu-list.show {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
     }
     #menu-list a {
-      display: block;
-      padding: 10px 20px;
-      text-decoration: none;
-      color: #006400;
-      font-family: 'Times New Roman', serif;
+      display: block; padding: 10px 20px; text-decoration: none;
+      color: #006400; font-family: 'Times New Roman', serif;
       transition: background-color 0.2s;
     }
     #menu-list a:hover {
-      background-color: #228B22;
-      color: white;
+      background-color: #228B22; color: white;
     }
+
   </style>
 </head>
 <body>
@@ -226,12 +176,7 @@
         <p><strong>Languages:</strong> Linux, R, Python</p>
         <p><strong>Technologies:</strong> Proficient in using various bioinformatics tools for single-cell transcriptomics (Seurat, cNMF, Monocle, CellPhoneDB, hdWGCNA, pySCENIC), spatial transcriptomics (Seurat), and single-cell ATAC-seq analysis (ArchR, Signac), including data integration and downstream analysis.</p>
         <div style="text-align: center; margin-top: 25px;">
-          <img 
-            src="/picture/skill.png" 
-            alt="Skills Image" 
-            id="skill-img"
-            style="max-width: 100%; height: auto;"
-          >
+          <img src="/picture/skill.png" alt="Skills Image" id="skill-img" style="max-width: 100%; height: auto;">
         </div>
       </div>
     </section>
@@ -240,16 +185,12 @@
     <section id="projects">
       <h2>Projects</h2>
       <div style="line-height: 1.6;">
-        <p>
-          <a href="sub/database.html" target="_blank" class="project-link">
-            RE-Aging: A Functional Analysis Platform for Human RNA Editing Associated with Aging
-          </a>
-        </p>
-        <p>
-          <a href="sub/pd1.html" target="_blank" class="project-link">
-            Single-Cell Atlas of Pan-Cancer Immunotherapy Reveals the Role of Ferroptosis in Exhausted Macrophages and Immune Therapy Resistance
-          </a>
-        </p>
+        <p><a href="sub/database.html" target="_blank" class="project-link">
+          RE-Aging: A Functional Analysis Platform for Human RNA Editing Associated with Aging
+        </a></p>
+        <p><a href="sub/pd1.html" target="_blank" class="project-link">
+          Single-Cell Atlas of Pan-Cancer Immunotherapy Reveals the Role of Ferroptosis in Exhausted Macrophages and Immune Therapy Resistance
+        </a></p>
       </div>
     </section>
 
@@ -271,26 +212,17 @@
     <a href="#projects">Projects</a>
   </div>
 
-  <!-- 点击放大 Skill 图片脚本 -->
+  <!-- 脚本 -->
   <script>
     const skillImg = document.getElementById('skill-img');
     skillImg.addEventListener('click', function() {
-      if (!skillImg.classList.contains('zoomed')) {
-        skillImg.classList.add('zoomed');
-      } else {
-        skillImg.classList.remove('zoomed');
-      }
+      skillImg.classList.toggle('zoomed');
     });
 
-    // 菜单按钮
     const menuButton = document.getElementById('menu-button');
     const menuList = document.getElementById('menu-list');
     menuButton.addEventListener('click', () => {
-      if (menuList.style.display === 'flex') {
-        menuList.style.display = 'none';
-      } else {
-        menuList.style.display = 'flex';
-      }
+      menuList.classList.toggle('show');
     });
   </script>
 </body>
