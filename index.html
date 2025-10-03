@@ -11,17 +11,17 @@
       padding: 0;
       background: #e6f2e6; /* light green */
       color: #333;
-      font-size: 1.5em; /* 整体放大 150% */
+      font-size: 1.25em; /* 整体放大 125% */
     }
     .container {
-      max-width: 1350px; /* 原来900px，放大150% */
+      max-width: 1125px; /* 原来900px × 1.25 */
       margin: 0 auto;
-      padding: 60px 30px; /* 放大内边距 */
+      padding: 50px 25px; /* 内边距按比例放大 */
     }
     .card {
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      padding: 60px 50px; /* 放大卡片内容 */
+      padding: 50px 40px; /* 卡片内容放大125% */
       text-align: center;
       transition: transform 0.2s ease;
       background-image: url("picture/card.png");
@@ -33,40 +33,40 @@
       transform: translateY(-5px);
     }
     h1 {
-      font-size: 3.3em; /* 原 2.2em 放大150% */
+      font-size: 2.75em; /* 2.2em × 1.25 */
       margin: 0;
     }
     p.subtitle {
-      font-size: 1.8em; /* 原 1.2em 放大150% */
-      margin-top: 15px;
+      font-size: 1.5em; /* 1.2em × 1.25 */
+      margin-top: 12px;
     }
     .contact {
-      margin-top: 35px; /* 放大间距 */
-      font-size: 1.65em; /* 原 1.1em 放大150% */
+      margin-top: 30px; /* 放大间距 */
+      font-size: 1.375em; /* 1.1em × 1.25 */
       line-height: 1.6;
       text-align: center;
     }
     .contact a {
-      color: #000 !important; /* 确保链接文字为黑色 */
+      color: #000 !important;
       text-decoration: underline;
     }
     section {
-      margin-top: 60px; /* 放大间距 */
+      margin-top: 50px; /* 放大间距 */
       text-align: left;
     }
     section h2 {
-      font-size: 2.25em; /* 原 1.5em 放大150% */
+      font-size: 1.875em; /* 1.5em × 1.25 */
       border-left: 4px solid #4a90e2;
       padding-left: 10px;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
     section p, section li {
-      font-size: 1.5em; /* 放大段落和列表文字 */
+      font-size: 1.25em; /* 段落文字放大125% */
     }
     footer {
-      margin-top: 75px; /* 放大底部间距 */
+      margin-top: 62px; /* 底部间距按比例放大 */
       text-align: center;
-      font-size: 1.35em; /* 原 0.9em 放大150% */
+      font-size: 1.125em; /* 0.9em × 1.25 */
       color: #999;
     }
   </style>
@@ -92,7 +92,7 @@
 
     <section>
       <h2>Education</h2>
-      <div style="font-family: 'Times New Roman', serif; margin-bottom: 30px;">
+      <div style="font-family: 'Times New Roman', serif; margin-bottom: 25px;">
         <p>
           <strong>Sun Yat-sen University</strong>
           <span style="float: right;">Sept 2018– June 2022</span>
@@ -102,7 +102,7 @@
         <p>Coursework: Bioinformatics, Immunology, Biochemistry, Cell Biology, Molecular Biology</p>
       </div>
 
-      <div style="font-family: 'Times New Roman', serif; margin-bottom: 30px;">
+      <div style="font-family: 'Times New Roman', serif; margin-bottom: 25px;">
         <p>
           <strong>Sun Yat-sen University</strong>
           <span style="float: right;">Sept 2022– June 2025</span>
@@ -111,7 +111,7 @@
         <p>GPA: 86/100</p>
       </div>
 
-      <p style="margin-top: 30px; font-family: 'Times New Roman', serif; font-weight: bold;">
+      <p style="margin-top: 25px; font-family: 'Times New Roman', serif; font-weight: bold;">
         English Proficiency: IELTS 6.5
       </p>
     </section>
@@ -121,7 +121,7 @@
       <div style="font-family: 'Times New Roman', serif; line-height: 1.6;">
         <p><strong>Languages:</strong> Linux, R, Python</p>
         <p><strong>Technologies:</strong> Proficient in using various bioinformatics tools for single-cell transcriptomics (Seurat, cNMF, Monocle, CellPhoneDB, hdWGCNA, pySCENIC), spatial transcriptomics (Seurat), and single-cell ATAC-seq analysis (ArchR, Signac), including data integration and downstream analysis.</p>
-        <div style="text-align: center; margin-top: 30px;">
+        <div style="text-align: center; margin-top: 25px;">
           <img src="/picture/skill.png" alt="Skills Image" style="max-width: 100%; height: auto;">
         </div>
       </div>
