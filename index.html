@@ -100,6 +100,18 @@
       transform-origin: center center;
     }
 
+    /* Projects 链接悬停效果 */
+    .project-link {
+      font-family: 'Times New Roman', serif;
+      color: #0000EE;
+      text-decoration: none;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+    .project-link:hover {
+      transform: scale(1.03);
+      color: #4a90e2;
+    }
+
     /* 响应式设计 */
     @media (max-width: 768px) {
       body { font-size: 1em; }
@@ -177,7 +189,18 @@
     <!-- Projects -->
     <section>
       <h2>Projects</h2>
-      <p><!-- Empty content, to be added later --></p>
+      <div style="line-height: 1.6;">
+        <p>
+          <a href="sub/database.html" target="_blank" class="project-link">
+            RE-Aging: A Functional Analysis Platform for Human RNA Editing Associated with Aging
+          </a>
+        </p>
+        <p>
+          <a href="sub/pd1.html" target="_blank" class="project-link">
+            Single-Cell Atlas of Pan-Cancer Immunotherapy Reveals the Role of Ferroptosis in Exhausted Macrophages and Immune Therapy Resistance
+          </a>
+        </p>
+      </div>
     </section>
 
     <footer>
