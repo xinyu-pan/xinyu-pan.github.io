@@ -85,14 +85,13 @@
       transform: scale(1.05);
     }
 
-    /* 点击放大效果 */
     .zoomed {
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(5); /* 放大到屏幕 95% */
-      max-width: 95%;
-      max-height: 95%;
+      transform: translate(-50%, -50%) scale(4); /* 调整 scale 让图片更合理 */
+      max-width: 85%; /* 屏幕宽度 85% */
+      max-height: 85%;
       width: auto;
       height: auto;
       z-index: 9999;
