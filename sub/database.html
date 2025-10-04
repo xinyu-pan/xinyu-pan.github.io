@@ -1,1 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RE-Aging | Xinyu-Pan</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #e6f2e6;
+      color: #333;
+      font-size: 1.25em;
+    }
+    .container {
+      max-width: 1125px;
+      margin: 0 auto;
+      padding: 50px 25px;
+    }
+    h1 {
+      font-size: 2.5em;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    section {
+      margin-top: 40px;
+      text-align: left;
+    }
+    section h2 {
+      font-size: 1.875em;
+      border-left: 4px solid #4a90e2;
+      padding-left: 10px;
+      margin-bottom: 18px;
+    }
+    section p {
+      font-size: 1.25em;
+      line-height: 1.6;
+      font-family: 'Times New Roman', serif;
+    }
 
+    /* 图片交互效果 */
+    .content-img {
+      text-align: center;
+      margin-top: 25px;
+    }
+    #db-img {
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.4s ease;
+    }
+    #db-img:hover {
+      transform: scale(1.05);
+    }
+    .zoomed {
+      position: fixed !important;
+      top: 50% !important;
+      left: 50% !important;
+      width: 85%;
+      max-height: 90%;
+      transform: translate(-50%, -50%) scale(1);
+      z-index: 9999;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      cursor: zoom-out;
+      transition: transform 0.4s ease;
+      transform-origin: center center;
+    }
+
+    /* 小圆球菜单 */
+    .menu-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 55px;
+      height: 55px;
+      background-color: #4a90e2;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 10000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .menu-btn:hover {
+      transform: scale(1.1);
+    }
+    .menu-btn div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .menu-list {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      padding: 10px 0;
+      z-index: 10000;
+      overflow: hidden;
+    }
+    .menu-list a {
+      padding: 12px 20px;
+      text-decoration: none;
+      color: #333;
+      font-family: 'Times New Roman', serif;
+      font-size: 1.1em;
+      transition: background 0.2s ease;
+    }
+    .menu-list a:hover {
+      background: #e6f2e6;
+    }
+
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 1.125em;
+      color: #999;
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      body { font-size: 1em; }
+      .container { padding: 20px 15px; }
+      h1 { font-size: 2em; }
+      section h2 { font-size: 1.5em; }
+      section p { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 标题 -->
+    <h1>RE-Aging: A Functional Analysis Platform for Human RNA Editing Associated with Aging</h1>
+
+    <!-- Abstract -->
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>
+        RNA editing is a process that modifies mRNA by changing nucleotide sequences, leading to diverse functional outcomes. There is a certain association between RNA editing and aging. In this study, we introduce RE-Aging, a platform for analyzing aging-related RNA editing. Using GTEx data, we identified 259,620 A-to-I and 30,502 C-to-U RNA editing sites across 27 human tissues and organs. The platform allows users to explore RNA editing site information and correlations between A-to-I editing and age across organs, and provides options to download A-to-I and C-to-U data and correlations. The FUNCTION section offers tools for gene and region annotations, RNA structural changes, and miRNA binding alterations due to editing. Users can upload their own miRNA FASTQ files for analysis. The platform also includes differential RNA editing analysis using the Wilcoxon test, with sample information available for download or custom analysis via uploaded DEMO FILEs. Additionally, we present a single-cell RNA editing age map for various blood cell types. The SINGLE-CELL section provides insights into gene expression and editing relationships, with filtering options by cell type or sample. scCancerExplorer is freely accessible via <a href="http://bioinfo-sysu.com/RE-Aging/" target="_blank">http://bioinfo-sysu.com/RE-Aging/ 🔗</a>
+      </p>
+    </section>
+
+    <!-- Content -->
+    <section id="content">
+      <h2>Content</h2>
+      <div class="content-img">
+        <img src="/picture/database.png" alt="RE-Aging Platform Overview" id="db-img">
+      </div>
+      <p style="text-align: center; font-weight: bold; margin-top: 12px; font-family: 'Times New Roman', serif;">
+        Figure 1. A schematic diagram illustrating the data curation, web construction and user interface of RE-Aging.
+      </p>
+    </section>
+
+    <footer>
+      © 2025 Xinyu-Pan. All rights reserved.
+    </footer>
+  </div>
+
+  <!-- 小圆球菜单 -->
+  <div class="menu-btn" id="menu-btn">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="menu-list" id="menu-list">
+    <a href="index.html">Home</a>
+    <a href="#abstract">Abstract</a>
+    <a href="#content">Content</a>
+  </div>
+
+  <!-- 脚本 -->
+  <script>
+    const dbImg = document.getElementById('db-img');
+    dbImg.addEventListener('click', function() {
+      if (!dbImg.classList.contains('zoomed')) {
+        dbImg.classList.add('zoomed');
+      } else {
+        dbImg.classList.remove('zoomed');
+      }
+    });
+
+    const menuBtn = document.getElementById('menu-btn');
+    const menuList = document.getElementById('menu-list');
+    menuBtn.addEventListener('click', function() {
+      menuList.style.display = menuList.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script>
+</body>
+</html>
