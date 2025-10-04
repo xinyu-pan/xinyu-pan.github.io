@@ -25,6 +25,12 @@
       font-size: 2.5em;
       margin-bottom: 25px;
     }
+    section h2 {
+      font-size: 1.875em;
+      border-left: 4px solid #4a90e2;
+      padding-left: 10px;
+      margin-bottom: 18px;
+    }
     section p {
       font-family: 'Times New Roman', serif;
       line-height: 1.6;
@@ -42,14 +48,14 @@
       color: #999;
     }
 
-    /* 图片悬停略微放大 */
+    /* 图片悬停略微放大并留空 */
     #database-img {
       max-width: 100%;
       height: auto;
       cursor: pointer;
       transition: transform 0.3s ease;
       display: block;
-      margin: 20px auto;
+      margin: 20px 0 30px 0;
     }
     #database-img:hover {
       transform: scale(1.05);
@@ -60,6 +66,7 @@
       body { font-size: 1em; }
       .container { padding: 20px 15px; }
       h1 { font-size: 2em; }
+      section h2 { font-size: 1.5em; }
     }
 
     /* 悬浮圆球菜单 */
@@ -101,7 +108,7 @@
       background-color: #228B22; color: white;
     }
 
-    /* 链接样式 */
+    /* 外部链接样式 */
     .external-link {
       color: #006400;
       text-decoration: none;
@@ -119,14 +126,16 @@
 
     <!-- Abstract -->
     <section id="abstract">
+      <h2>Abstract</h2>
       <p>
         RNA editing is a process that modifies mRNA by changing nucleotide sequences, leading to diverse functional outcomes. There is a certain association between RNA editing and aging. In this study, we introduce RE-Aging, a platform for analyzing aging-related RNA editing. Using GTEx data, we identified 259,620 A-to-I and 30,502 C-to-U RNA editing sites across 27 human tissues and organs. The platform allows users to explore RNA editing site information and correlations between A-to-I editing and age across organs, and provides options to download A-to-I and C-to-U data and correlations. The FUNCTION section offers tools for gene and region annotations, RNA structural changes, and miRNA binding alterations due to editing. Users can upload their own miRNA FASTQ files for analysis. The platform also includes differential RNA editing analysis using the Wilcoxon test, with sample information available for download or custom analysis via uploaded DEMO FILEs. Additionally, we present a single-cell RNA editing age map for various blood cell types. The SINGLE-CELL section provides insights into gene expression and editing relationships, with filtering options by cell type or sample. scCancerExplorer is freely accessible via 
         <a href="http://bioinfo-sysu.com/RE-Aging/" target="_blank" class="external-link">http://bioinfo-sysu.com/RE-Aging/</a>.
       </p>
     </section>
 
-    <!-- Content / Image -->
+    <!-- Content -->
     <section id="content">
+      <h2>Content</h2>
       <img src="/picture/database.png" alt="RE-Aging Diagram" id="database-img">
       <div class="figure-caption">Figure 1. A schematic diagram illustrating the data curation, web construction and user interface of RE-Aging.</div>
     </section>
