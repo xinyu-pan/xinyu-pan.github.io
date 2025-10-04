@@ -1,1 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single-Cell Atlas PD-1 | Xinyu-Pan</title>
+  <style>
+    /* 全局样式 */
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #e6f2e6;
+      color: #333;
+      font-size: 1.25em;
+    }
+    .container {
+      max-width: 1125px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 50px 25px;
+    }
+    h1 {
+      font-weight: bold;
+      font-size: 2.5em;
+      margin-bottom: 25px;
+    }
+    section h2 {
+      font-size: 1.875em;
+      border-left: 4px solid #4a90e2;
+      padding-left: 10px;
+      margin-bottom: 18px;
+    }
+    section p {
+      font-family: 'Times New Roman', serif;
+      line-height: 1.6;
+    }
+    .figure-caption {
+      font-family: 'Times New Roman', serif;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 8px;
+    }
+    footer {
+      margin-top: 62px;
+      text-align: center;
+      font-size: 1.125em;
+      color: #999;
+    }
 
+    /* 图片悬停略微放大并留空 */
+    .figure-img {
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      display: block;
+      margin: 30px 0 30px 0;
+    }
+    .figure-img:hover {
+      transform: scale(1.05);
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      body { font-size: 1em; }
+      .container { padding: 20px 15px; }
+      h1 { font-size: 2em; }
+      section h2 { font-size: 1.5em; }
+    }
+
+    /* 悬浮圆球菜单 */
+    #menu-button {
+      position: fixed; top: 20px; right: 20px; width: 50px; height: 50px;
+      background-color: #006400; border-radius: 50%; display: flex;
+      flex-direction: column; justify-content: center; align-items: center;
+      cursor: pointer; z-index: 10000; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background-color 0.3s;
+    }
+    #menu-button:hover { background-color: #228B22; }
+    #menu-button .bar {
+      width: 25px; height: 3px; background-color: white; margin: 3px 0; border-radius: 2px;
+      transition: all 0.3s;
+    }
+    #menu-list {
+      position: fixed; top: 80px; right: 20px;
+      background-color: #f0fff0;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: none; flex-direction: column;
+      z-index: 9999;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    #menu-list.show {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #menu-list a {
+      display: block; padding: 10px 20px; text-decoration: none;
+      color: #006400; font-family: 'Times New Roman', serif;
+      transition: background-color 0.2s;
+    }
+    #menu-list a:hover {
+      background-color: #228B22; color: white;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 标题 -->
+    <h1>Single-Cell Atlas of Pan-Cancer Immunotherapy Reveals the Role of Ferroptosis in Exhausted Macrophages and Immune Therapy Resistance</h1>
+
+    <!-- Abstract -->
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>
+        Although anti-PD-1 immune checkpoint blockade (ICB) shows efficacy across malignancies, resistance remains a major challenge. Tumor-associated macrophages (TAMs), key players in the tumor immune microenvironment, are highly plastic and can promote immune activation or suppression. By integrating single-cell transcriptomic datasets from 64 PD-1 inhibitor–treated patients across six tumor types, we identified a metabolically reprogrammed SLC40A1+SELENOP+ TAM subset enriched in non-responders. These TAMs exhibit ferroptosis resistance via upregulation of lipid metabolism and iron homeostasis genes, display an exhausted phenotype with impaired immune activity, and correlate with poor ICB outcomes. Mechanistically, transcription factor CEBPD activates SLC40A1 to drive iron efflux–mediated ferroptosis resistance and M2-like polarization, establishing a regulatory axis central to TAM exhaustion and ICB resistance. In an orthotopic hepatocellular carcinoma (HCC) mouse model, SLC40A1 inhibition enhanced anti-PD-1 efficacy. This study defines a dysfunctional, ferroptosis-resistant TAM subset and highlights the CEBPD–SLC40A1 axis as a therapeutic target for combined blockade with anti-PD-1 therapy.
+      </p>
+    </section>
+
+    <!-- Content -->
+    <section id="content">
+      <h2>Content</h2>
+      <img src="/picture/pd1Fig.1.png" alt="Figure 1" class="figure-img">
+      <div class="figure-caption">Figure 1. Pan-cancer single-cell atlas of anti-PD-1 therapy response.</div>
+
+      <img src="/picture/pd1ExtendedDataFig.1.png" alt="Figure 2" class="figure-img">
+      <div class="figure-caption">Figure 2. Single-cell transcriptomic characterization and annotation of major immune and stromal cell types.</div>
+
+      <img src="/picture/pd1Fig.2.png" alt="Figure 3" class="figure-img">
+      <div class="figure-caption">Figure 3. Characterization of exhausted intermediate TAMs.</div>
+
+      <img src="/picture/pd1Fig.3.png" alt="Figure 4" class="figure-img">
+      <div class="figure-caption">Figure 4. Pseudotime and hdWGCNA analyses reveal transcriptomic features of exhausted intermediate TAMs.</div>
+    </section>
+
+    <footer>
+      © 2025 Xinyu-Pan. All rights reserved.
+    </footer>
+  </div>
+
+  <!-- 悬浮圆球菜单 -->
+  <div id="menu-button">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <div id="menu-list">
+    <a href="../index.html">Home</a>
+    <a href="#abstract">Abstract</a>
+    <a href="#content">Content</a>
+  </div>
+
+  <script>
+    // 圆球菜单
+    const menuButton = document.getElementById('menu-button');
+    const menuList = document.getElementById('menu-list');
+    menuButton.addEventListener('click', () => {
+      menuList.classList.toggle('show');
+    });
+
+    // 图片悬停略微放大
+    const figureImgs = document.querySelectorAll('.figure-img');
+    figureImgs.forEach(img => {
+      img.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.05)'; });
+      img.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)'; });
+    });
+  </script>
+</body>
+</html>
