@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RE-Aging | Xinyu-Pan</title>
   <style>
+    /* 全局样式 */
     body {
       font-family: "Helvetica Neue", Arial, sans-serif;
       margin: 0;
@@ -15,14 +16,14 @@
     }
     .container {
       max-width: 1125px;
+      width: 100%;
       margin: 0 auto;
       padding: 50px 25px;
     }
     h1 {
-      font-size: 2.5em;
       font-weight: bold;
-      text-align: center;
-      margin-bottom: 30px;
+      font-size: 2.5em;
+      margin-bottom: 20px;
     }
     section {
       margin-top: 40px;
@@ -34,98 +35,118 @@
       padding-left: 10px;
       margin-bottom: 18px;
     }
-    section p {
+    p, li {
+      font-family: 'Times New Roman', serif;
       font-size: 1.25em;
       line-height: 1.6;
-      font-family: 'Times New Roman', serif;
+    }
+    a {
+      text-decoration: none;
+      color: #006400;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    a:hover {
+      color: #228B22;
+      transform: scale(1.03);
+    }
+    a::after {
+      content: " 🔗";
+    }
+    footer {
+      margin-top: 62px;
+      text-align: center;
+      font-size: 1.125em;
+      color: #999;
     }
 
-    /* 图片交互效果 */
+    /* Skill-like 图片交互效果 */
     .content-img {
-      text-align: center;
-      margin-top: 25px;
-    }
-    #db-img {
+      display: block;
       max-width: 100%;
       height: auto;
+      margin: 20px auto 10px auto;
       cursor: pointer;
-      transition: transform 0.4s ease;
+      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 1;
     }
-    #db-img:hover {
+    .content-img:hover {
       transform: scale(1.05);
     }
     .zoomed {
       position: fixed !important;
       top: 50% !important;
       left: 50% !important;
-      width: 85%;
-      max-height: 90%;
+      width: 95%;
+      max-height: 95%;
       transform: translate(-50%, -50%) scale(1);
       z-index: 9999;
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
       cursor: zoom-out;
-      transition: transform 0.4s ease;
+      transition: transform 0.4s ease, top 0.4s ease, left 0.4s ease;
       transform-origin: center center;
     }
 
-    /* 小圆球菜单 */
-    .menu-btn {
+    /* 悬浮菜单按钮 */
+    #menu-button {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 55px;
-      height: 55px;
-      background-color: #4a90e2;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #006400;
       border-radius: 50%;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       cursor: pointer;
       z-index: 10000;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background-color 0.3s;
     }
-    .menu-btn:hover {
-      transform: scale(1.1);
-    }
-    .menu-btn div {
+    #menu-button:hover { background-color: #228B22; }
+    #menu-button .bar {
       width: 25px;
       height: 3px;
       background-color: white;
-      margin: 4px 0;
+      margin: 3px 0;
       border-radius: 2px;
-      transition: all 0.3s ease;
+      transition: all 0.3s;
     }
-    .menu-list {
+
+    /* 弹出菜单 */
+    #menu-list {
       position: fixed;
-      bottom: 100px;
-      right: 30px;
-      background: white;
+      top: 80px;
+      right: 20px;
+      background-color: #f0fff0;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       display: none;
       flex-direction: column;
-      padding: 10px 0;
-      z-index: 10000;
+      z-index: 9999;
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
-    .menu-list a {
-      padding: 12px 20px;
+    #menu-list.show {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #menu-list a {
+      display: block;
+      padding: 10px 20px;
       text-decoration: none;
-      color: #333;
+      color: #006400;
       font-family: 'Times New Roman', serif;
-      font-size: 1.1em;
-      transition: background 0.2s ease;
+      transition: background-color 0.2s, color 0.2s;
     }
-    .menu-list a:hover {
-      background: #e6f2e6;
-    }
-
-    footer {
-      margin-top: 60px;
-      text-align: center;
-      font-size: 1.125em;
-      color: #999;
+    #menu-list a:hover {
+      background-color: #228B22;
+      color: white;
     }
 
     /* 响应式 */
@@ -134,30 +155,34 @@
       .container { padding: 20px 15px; }
       h1 { font-size: 2em; }
       section h2 { font-size: 1.5em; }
-      section p { font-size: 1em; }
+      p, li { font-size: 1em; }
+    }
+
+    /* Figure caption */
+    .figure-caption {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 40px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- 标题 -->
     <h1>RE-Aging: A Functional Analysis Platform for Human RNA Editing Associated with Aging</h1>
 
     <!-- Abstract -->
     <section id="abstract">
       <h2>Abstract</h2>
       <p>
-        RNA editing is a process that modifies mRNA by changing nucleotide sequences, leading to diverse functional outcomes. There is a certain association between RNA editing and aging. In this study, we introduce RE-Aging, a platform for analyzing aging-related RNA editing. Using GTEx data, we identified 259,620 A-to-I and 30,502 C-to-U RNA editing sites across 27 human tissues and organs. The platform allows users to explore RNA editing site information and correlations between A-to-I editing and age across organs, and provides options to download A-to-I and C-to-U data and correlations. The FUNCTION section offers tools for gene and region annotations, RNA structural changes, and miRNA binding alterations due to editing. Users can upload their own miRNA FASTQ files for analysis. The platform also includes differential RNA editing analysis using the Wilcoxon test, with sample information available for download or custom analysis via uploaded DEMO FILEs. Additionally, we present a single-cell RNA editing age map for various blood cell types. The SINGLE-CELL section provides insights into gene expression and editing relationships, with filtering options by cell type or sample. scCancerExplorer is freely accessible via <a href="http://bioinfo-sysu.com/RE-Aging/" target="_blank">http://bioinfo-sysu.com/RE-Aging/ 🔗</a>
+        RNA editing is a process that modifies mRNA by changing nucleotide sequences, leading to diverse functional outcomes. There is a certain association between RNA editing and aging. In this study, we introduce RE-Aging, a platform for analyzing aging-related RNA editing. Using GTEx data, we identified 259,620 A-to-I and 30,502 C-to-U RNA editing sites across 27 human tissues and organs. The platform allows users to explore RNA editing site information and correlations between A-to-I editing and age across organs, and provides options to download A-to-I and C-to-U data and correlations. The FUNCTION section offers tools for gene and region annotations, RNA structural changes, and miRNA binding alterations due to editing. Users can upload their own miRNA FASTQ files for analysis. The platform also includes differential RNA editing analysis using the Wilcoxon test, with sample information available for download or custom analysis via uploaded DEMO FILEs. Additionally, we present a single-cell RNA editing age map for various blood cell types. The SINGLE-CELL section provides insights into gene expression and editing relationships, with filtering options by cell type or sample. <a href="http://bioinfo-sysu.com/RE-Aging/" target="_blank">http://bioinfo-sysu.com/RE-Aging/</a>
       </p>
     </section>
 
-    <!-- Content -->
+    <!-- Content/Image -->
     <section id="content">
       <h2>Content</h2>
-      <div class="content-img">
-        <img src="/picture/database.png" alt="RE-Aging Platform Overview" id="db-img">
-      </div>
-      <p style="text-align: center; font-weight: bold; margin-top: 12px; font-family: 'Times New Roman', serif;">
+      <img src="/picture/database.png" alt="RE-Aging Illustration" class="content-img">
+      <p class="figure-caption">
         Figure 1. A schematic diagram illustrating the data curation, web construction and user interface of RE-Aging.
       </p>
     </section>
@@ -167,13 +192,13 @@
     </footer>
   </div>
 
-  <!-- 小圆球菜单 -->
-  <div class="menu-btn" id="menu-btn">
-    <div></div>
-    <div></div>
-    <div></div>
+  <!-- 圆球菜单 -->
+  <div id="menu-button">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
   </div>
-  <div class="menu-list" id="menu-list">
+  <div id="menu-list">
     <a href="index.html">Home</a>
     <a href="#abstract">Abstract</a>
     <a href="#content">Content</a>
@@ -181,20 +206,14 @@
 
   <!-- 脚本 -->
   <script>
-    const dbImg = document.getElementById('db-img');
-    dbImg.addEventListener('click', function() {
-      if (!dbImg.classList.contains('zoomed')) {
-        dbImg.classList.add('zoomed');
-      } else {
-        dbImg.classList.remove('zoomed');
-      }
-    });
+    // 图片点击放大
+    const img = document.querySelector('.content-img');
+    img.addEventListener('click', () => img.classList.toggle('zoomed'));
 
-    const menuBtn = document.getElementById('menu-btn');
+    // 圆球菜单展开
+    const menuButton = document.getElementById('menu-button');
     const menuList = document.getElementById('menu-list');
-    menuBtn.addEventListener('click', function() {
-      menuList.style.display = menuList.style.display === 'flex' ? 'none' : 'flex';
-    });
+    menuButton.addEventListener('click', () => menuList.classList.toggle('show'));
   </script>
 </body>
 </html>
