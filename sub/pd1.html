@@ -61,12 +61,21 @@
       transform: scale(1.05);
     }
 
+    /* 图形摘要专用样式 */
+    .graphical-abstract {
+      width: 60%;
+      height: auto;
+      display: block;
+      margin: 30px auto;
+    }
+
     /* 响应式 */
     @media (max-width: 768px) {
       body { font-size: 1em; }
       .container { padding: 20px 15px; }
       h1 { font-size: 2em; }
       section h2 { font-size: 1.5em; }
+      .graphical-abstract { width: 90%; }
     }
 
     /* 悬浮圆球菜单 */
@@ -121,6 +130,10 @@
       <p>
         Although anti-PD-1 immune checkpoint blockade (ICB) shows efficacy across malignancies, resistance remains a major challenge. Tumor-associated macrophages (TAMs), key players in the tumor immune microenvironment, are highly plastic and can promote immune activation or suppression. By integrating single-cell transcriptomic datasets from 64 PD-1 inhibitor–treated patients across six tumor types, we identified a metabolically reprogrammed SLC40A1+SELENOP+ TAM subset enriched in non-responders. These TAMs exhibit ferroptosis resistance via upregulation of lipid metabolism and iron homeostasis genes, display an exhausted phenotype with impaired immune activity, and correlate with poor ICB outcomes. Mechanistically, transcription factor CEBPD activates SLC40A1 to drive iron efflux–mediated ferroptosis resistance and M2-like polarization, establishing a regulatory axis central to TAM exhaustion and ICB resistance. In an orthotopic hepatocellular carcinoma (HCC) mouse model, SLC40A1 inhibition enhanced anti-PD-1 efficacy. This study defines a dysfunctional, ferroptosis-resistant TAM subset and highlights the CEBPD–SLC40A1 axis as a therapeutic target for combined blockade with anti-PD-1 therapy.
       </p>
+
+      <!-- Graphical Abstract -->
+      <img src="../picture/pd-1_SLC40A1.png" alt="Graphical Abstract" class="figure-img graphical-abstract">
+      <div class="figure-caption">Graphical Abstract</div>
     </section>
 
     <!-- Content -->
